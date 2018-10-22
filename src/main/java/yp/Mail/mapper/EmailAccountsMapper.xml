@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="yp.Mail.mapper.EmailAccountsMapper" >
+  <resultMap id="BaseResultMap" type="yp.Mail.pojo.EmailAccounts" >
+    <id column="UserID" property="userid" jdbcType="VARCHAR" />
+    <result column="Mail_UserName" property="mailUsername" jdbcType="VARCHAR" />
+    <result column="Mail_PassWord" property="mailPassword" jdbcType="VARCHAR" />
+    <result column="HasBeen_Sent" property="hasbeenSent" jdbcType="VARCHAR" />
+    <result column="HasBeen_Accepted" property="hasbeenAccepted" jdbcType="VARCHAR" />
+    <result column="LinkMan" property="linkman" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    UserID, Mail_UserName, Mail_PassWord, HasBeen_Sent, HasBeen_Accepted, LinkMan
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="yp.Mail.pojo.EmailAccountsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from email_accounts
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from email_accounts
+    where UserID = #{userid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from email_accounts
+    where UserID = #{userid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="yp.Mail.pojo.EmailAccountsExample" >
+    delete from email_accounts
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="yp.Mail.pojo.EmailAccounts" >
+    insert into email_accounts (UserID, Mail_UserName, Mail_PassWord, 
+      HasBeen_Sent, HasBeen_Accepted, LinkMan
+      )
+    values (#{userid,jdbcType=VARCHAR}, #{mailUsername,jdbcType=VARCHAR}, #{mailPassword,jdbcType=VARCHAR}, 
+      #{hasbeenSent,jdbcType=VARCHAR}, #{hasbeenAccepted,jdbcType=VARCHAR}, #{linkman,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="yp.Mail.pojo.EmailAccounts" >
+    insert into email_accounts
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        UserID,
+      </if>
+      <if test="mailUsername != null" >
+        Mail_UserName,
+      </if>
+      <if test="mailPassword != null" >
+        Mail_PassWord,
+      </if>
+      <if test="hasbeenSent != null" >
+        HasBeen_Sent,
+      </if>
+      <if test="hasbeenAccepted != null" >
+        HasBeen_Accepted,
+      </if>
+      <if test="linkman != null" >
+        LinkMan,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="mailUsername != null" >
+        #{mailUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="mailPassword != null" >
+        #{mailPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="hasbeenSent != null" >
+        #{hasbeenSent,jdbcType=VARCHAR},
+      </if>
+      <if test="hasbeenAccepted != null" >
+        #{hasbeenAccepted,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman != null" >
+        #{linkman,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="yp.Mail.pojo.EmailAccountsExample" resultType="java.lang.Integer" >
+    select count(*) from email_accounts
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update email_accounts
+    <set >
+      <if test="record.userid != null" >
+        UserID = #{record.userid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mailUsername != null" >
+        Mail_UserName = #{record.mailUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mailPassword != null" >
+        Mail_PassWord = #{record.mailPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hasbeenSent != null" >
+        HasBeen_Sent = #{record.hasbeenSent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hasbeenAccepted != null" >
+        HasBeen_Accepted = #{record.hasbeenAccepted,jdbcType=VARCHAR},
+      </if>
+      <if test="record.linkman != null" >
+        LinkMan = #{record.linkman,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update email_accounts
+    set UserID = #{record.userid,jdbcType=VARCHAR},
+      Mail_UserName = #{record.mailUsername,jdbcType=VARCHAR},
+      Mail_PassWord = #{record.mailPassword,jdbcType=VARCHAR},
+      HasBeen_Sent = #{record.hasbeenSent,jdbcType=VARCHAR},
+      HasBeen_Accepted = #{record.hasbeenAccepted,jdbcType=VARCHAR},
+      LinkMan = #{record.linkman,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="yp.Mail.pojo.EmailAccounts" >
+    update email_accounts
+    <set >
+      <if test="mailUsername != null" >
+        Mail_UserName = #{mailUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="mailPassword != null" >
+        Mail_PassWord = #{mailPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="hasbeenSent != null" >
+        HasBeen_Sent = #{hasbeenSent,jdbcType=VARCHAR},
+      </if>
+      <if test="hasbeenAccepted != null" >
+        HasBeen_Accepted = #{hasbeenAccepted,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman != null" >
+        LinkMan = #{linkman,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where UserID = #{userid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="yp.Mail.pojo.EmailAccounts" >
+    update email_accounts
+    set Mail_UserName = #{mailUsername,jdbcType=VARCHAR},
+      Mail_PassWord = #{mailPassword,jdbcType=VARCHAR},
+      HasBeen_Sent = #{hasbeenSent,jdbcType=VARCHAR},
+      HasBeen_Accepted = #{hasbeenAccepted,jdbcType=VARCHAR},
+      LinkMan = #{linkman,jdbcType=VARCHAR}
+    where UserID = #{userid,jdbcType=VARCHAR}
+  </update>
+</mapper>

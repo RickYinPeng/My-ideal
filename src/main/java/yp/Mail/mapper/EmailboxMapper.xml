@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="yp.Mail.mapper.EmailboxMapper" >
+  <resultMap id="BaseResultMap" type="yp.Mail.pojo.Emailbox" >
+    <id column="EmailID" property="emailid" jdbcType="VARCHAR" />
+    <result column="Sender" property="sender" jdbcType="VARCHAR" />
+    <result column="SenderCode" property="sendercode" jdbcType="VARCHAR" />
+    <result column="Receiver" property="receiver" jdbcType="VARCHAR" />
+    <result column="ReceiverCode" property="receivercode" jdbcType="VARCHAR" />
+    <result column="Title" property="title" jdbcType="VARCHAR" />
+    <result column="Content" property="content" jdbcType="VARCHAR" />
+    <result column="Enclosure" property="enclosure" jdbcType="VARCHAR" />
+    <result column="SendType" property="sendtype" jdbcType="INTEGER" />
+    <result column="SendDate" property="senddate" jdbcType="TIMESTAMP" />
+    <result column="ReadDate" property="readdate" jdbcType="TIMESTAMP" />
+    <result column="BoxType" property="boxtype" jdbcType="INTEGER" />
+    <result column="EmailStatus" property="emailstatus" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    EmailID, Sender, SenderCode, Receiver, ReceiverCode, Title, Content, Enclosure, SendType, 
+    SendDate, ReadDate, BoxType, EmailStatus
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="yp.Mail.pojo.EmailboxExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from emailbox
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from emailbox
+    where EmailID = #{emailid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from emailbox
+    where EmailID = #{emailid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="yp.Mail.pojo.EmailboxExample" >
+    delete from emailbox
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="yp.Mail.pojo.Emailbox" >
+    insert into emailbox (EmailID, Sender, SenderCode, 
+      Receiver, ReceiverCode, Title, 
+      Content, Enclosure, SendType, 
+      SendDate, ReadDate, BoxType, 
+      EmailStatus)
+    values (#{emailid,jdbcType=VARCHAR}, #{sender,jdbcType=VARCHAR}, #{sendercode,jdbcType=VARCHAR}, 
+      #{receiver,jdbcType=VARCHAR}, #{receivercode,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{enclosure,jdbcType=VARCHAR}, #{sendtype,jdbcType=INTEGER}, 
+      #{senddate,jdbcType=TIMESTAMP}, #{readdate,jdbcType=TIMESTAMP}, #{boxtype,jdbcType=INTEGER}, 
+      #{emailstatus,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="yp.Mail.pojo.Emailbox" >
+    insert into emailbox
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="emailid != null" >
+        EmailID,
+      </if>
+      <if test="sender != null" >
+        Sender,
+      </if>
+      <if test="sendercode != null" >
+        SenderCode,
+      </if>
+      <if test="receiver != null" >
+        Receiver,
+      </if>
+      <if test="receivercode != null" >
+        ReceiverCode,
+      </if>
+      <if test="title != null" >
+        Title,
+      </if>
+      <if test="content != null" >
+        Content,
+      </if>
+      <if test="enclosure != null" >
+        Enclosure,
+      </if>
+      <if test="sendtype != null" >
+        SendType,
+      </if>
+      <if test="senddate != null" >
+        SendDate,
+      </if>
+      <if test="readdate != null" >
+        ReadDate,
+      </if>
+      <if test="boxtype != null" >
+        BoxType,
+      </if>
+      <if test="emailstatus != null" >
+        EmailStatus,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="emailid != null" >
+        #{emailid,jdbcType=VARCHAR},
+      </if>
+      <if test="sender != null" >
+        #{sender,jdbcType=VARCHAR},
+      </if>
+      <if test="sendercode != null" >
+        #{sendercode,jdbcType=VARCHAR},
+      </if>
+      <if test="receiver != null" >
+        #{receiver,jdbcType=VARCHAR},
+      </if>
+      <if test="receivercode != null" >
+        #{receivercode,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="enclosure != null" >
+        #{enclosure,jdbcType=VARCHAR},
+      </if>
+      <if test="sendtype != null" >
+        #{sendtype,jdbcType=INTEGER},
+      </if>
+      <if test="senddate != null" >
+        #{senddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="readdate != null" >
+        #{readdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="boxtype != null" >
+        #{boxtype,jdbcType=INTEGER},
+      </if>
+      <if test="emailstatus != null" >
+        #{emailstatus,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="yp.Mail.pojo.EmailboxExample" resultType="java.lang.Integer" >
+    select count(*) from emailbox
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update emailbox
+    <set >
+      <if test="record.emailid != null" >
+        EmailID = #{record.emailid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sender != null" >
+        Sender = #{record.sender,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sendercode != null" >
+        SenderCode = #{record.sendercode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiver != null" >
+        Receiver = #{record.receiver,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receivercode != null" >
+        ReceiverCode = #{record.receivercode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.title != null" >
+        Title = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.content != null" >
+        Content = #{record.content,jdbcType=VARCHAR},
+      </if>
+      <if test="record.enclosure != null" >
+        Enclosure = #{record.enclosure,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sendtype != null" >
+        SendType = #{record.sendtype,jdbcType=INTEGER},
+      </if>
+      <if test="record.senddate != null" >
+        SendDate = #{record.senddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.readdate != null" >
+        ReadDate = #{record.readdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.boxtype != null" >
+        BoxType = #{record.boxtype,jdbcType=INTEGER},
+      </if>
+      <if test="record.emailstatus != null" >
+        EmailStatus = #{record.emailstatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update emailbox
+    set EmailID = #{record.emailid,jdbcType=VARCHAR},
+      Sender = #{record.sender,jdbcType=VARCHAR},
+      SenderCode = #{record.sendercode,jdbcType=VARCHAR},
+      Receiver = #{record.receiver,jdbcType=VARCHAR},
+      ReceiverCode = #{record.receivercode,jdbcType=VARCHAR},
+      Title = #{record.title,jdbcType=VARCHAR},
+      Content = #{record.content,jdbcType=VARCHAR},
+      Enclosure = #{record.enclosure,jdbcType=VARCHAR},
+      SendType = #{record.sendtype,jdbcType=INTEGER},
+      SendDate = #{record.senddate,jdbcType=TIMESTAMP},
+      ReadDate = #{record.readdate,jdbcType=TIMESTAMP},
+      BoxType = #{record.boxtype,jdbcType=INTEGER},
+      EmailStatus = #{record.emailstatus,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="yp.Mail.pojo.Emailbox" >
+    update emailbox
+    <set >
+      <if test="sender != null" >
+        Sender = #{sender,jdbcType=VARCHAR},
+      </if>
+      <if test="sendercode != null" >
+        SenderCode = #{sendercode,jdbcType=VARCHAR},
+      </if>
+      <if test="receiver != null" >
+        Receiver = #{receiver,jdbcType=VARCHAR},
+      </if>
+      <if test="receivercode != null" >
+        ReceiverCode = #{receivercode,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        Title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        Content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="enclosure != null" >
+        Enclosure = #{enclosure,jdbcType=VARCHAR},
+      </if>
+      <if test="sendtype != null" >
+        SendType = #{sendtype,jdbcType=INTEGER},
+      </if>
+      <if test="senddate != null" >
+        SendDate = #{senddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="readdate != null" >
+        ReadDate = #{readdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="boxtype != null" >
+        BoxType = #{boxtype,jdbcType=INTEGER},
+      </if>
+      <if test="emailstatus != null" >
+        EmailStatus = #{emailstatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    where EmailID = #{emailid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="yp.Mail.pojo.Emailbox" >
+    update emailbox
+    set Sender = #{sender,jdbcType=VARCHAR},
+      SenderCode = #{sendercode,jdbcType=VARCHAR},
+      Receiver = #{receiver,jdbcType=VARCHAR},
+      ReceiverCode = #{receivercode,jdbcType=VARCHAR},
+      Title = #{title,jdbcType=VARCHAR},
+      Content = #{content,jdbcType=VARCHAR},
+      Enclosure = #{enclosure,jdbcType=VARCHAR},
+      SendType = #{sendtype,jdbcType=INTEGER},
+      SendDate = #{senddate,jdbcType=TIMESTAMP},
+      ReadDate = #{readdate,jdbcType=TIMESTAMP},
+      BoxType = #{boxtype,jdbcType=INTEGER},
+      EmailStatus = #{emailstatus,jdbcType=INTEGER}
+    where EmailID = #{emailid,jdbcType=VARCHAR}
+  </update>
+</mapper>
