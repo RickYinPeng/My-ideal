@@ -11,7 +11,7 @@ public interface EmailAccountsMapper {
 
     int deleteByExample(EmailAccountsExample example);
 
-    int deleteByPrimaryKey(String userid);
+    int deleteByPrimaryKey(Integer userid);
 
     int insert(EmailAccounts record);
 
@@ -19,7 +19,7 @@ public interface EmailAccountsMapper {
 
     List<EmailAccounts> selectByExample(EmailAccountsExample example);
 
-    EmailAccounts selectByPrimaryKey(String userid);
+    EmailAccounts selectByPrimaryKey(Integer userid);
 
     int updateByExampleSelective(@Param("record") EmailAccounts record, @Param("example") EmailAccountsExample example);
 

@@ -114,62 +114,52 @@ public class EmailAccountsExample {
             return (Criteria) this;
         }
 
-        public Criteria andUseridEqualTo(String value) {
+        public Criteria andUseridEqualTo(Integer value) {
             addCriterion("UserID =", value, "userid");
             return (Criteria) this;
         }
 
-        public Criteria andUseridNotEqualTo(String value) {
+        public Criteria andUseridNotEqualTo(Integer value) {
             addCriterion("UserID <>", value, "userid");
             return (Criteria) this;
         }
 
-        public Criteria andUseridGreaterThan(String value) {
+        public Criteria andUseridGreaterThan(Integer value) {
             addCriterion("UserID >", value, "userid");
             return (Criteria) this;
         }
 
-        public Criteria andUseridGreaterThanOrEqualTo(String value) {
+        public Criteria andUseridGreaterThanOrEqualTo(Integer value) {
             addCriterion("UserID >=", value, "userid");
             return (Criteria) this;
         }
 
-        public Criteria andUseridLessThan(String value) {
+        public Criteria andUseridLessThan(Integer value) {
             addCriterion("UserID <", value, "userid");
             return (Criteria) this;
         }
 
-        public Criteria andUseridLessThanOrEqualTo(String value) {
+        public Criteria andUseridLessThanOrEqualTo(Integer value) {
             addCriterion("UserID <=", value, "userid");
             return (Criteria) this;
         }
 
-        public Criteria andUseridLike(String value) {
-            addCriterion("UserID like", value, "userid");
-            return (Criteria) this;
-        }
-
-        public Criteria andUseridNotLike(String value) {
-            addCriterion("UserID not like", value, "userid");
-            return (Criteria) this;
-        }
-
-        public Criteria andUseridIn(List<String> values) {
+        public Criteria andUseridIn(List<Integer> values) {
             addCriterion("UserID in", values, "userid");
             return (Criteria) this;
         }
 
-        public Criteria andUseridNotIn(List<String> values) {
+        public Criteria andUseridNotIn(List<Integer> values) {
             addCriterion("UserID not in", values, "userid");
             return (Criteria) this;
         }
 
-        public Criteria andUseridBetween(String value1, String value2) {
+        public Criteria andUseridBetween(Integer value1, Integer value2) {
             addCriterion("UserID between", value1, value2, "userid");
             return (Criteria) this;
         }
 
-        public Criteria andUseridNotBetween(String value1, String value2) {
+        public Criteria andUseridNotBetween(Integer value1, Integer value2) {
             addCriterion("UserID not between", value1, value2, "userid");
             return (Criteria) this;
         }

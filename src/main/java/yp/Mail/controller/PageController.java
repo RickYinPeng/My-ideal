@@ -1,12 +1,14 @@
 package yp.Mail.controller;
 
 import org.apache.commons.io.FilenameUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import yp.Mail.mapper.EmailboxMapper;
 import yp.Mail.pojo.Emailbox;
 import yp.Mail.service.EmailboxService;
 import yp.Mail.utils.ImageData;
@@ -16,7 +18,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 import java.util.UUID;
-
 /**
  * @author RickYinPeng
  * @ClassName TestController
@@ -26,7 +27,11 @@ import java.util.UUID;
 @Controller
 public class PageController {
 
+    @Autowired
     private EmailboxService emailboxService;
+
+    @Autowired
+    private EmailboxMapper emailboxMapper;
 
     @RequestMapping("/{page}")
     public String index(@PathVariable String page) {
@@ -36,11 +41,10 @@ public class PageController {
 
     //{emailid='null', sender='null', sendercode='null', receiver='null', receivercode='null', title='3123', content='<img src="/pic/a11f0cd576834043a7a2bbbc53b6f7e6.jpg" alt="上传的图片">', enclosure='null', sendtype=null, senddate=null, readdate=null, boxtype=null, emailstatus=null}
     @RequestMapping("/email/send")
-    public void sendEmail(Emailbox emailbox) {
+    public String sendEmail(Emailbox emailbox) {
 
-        //获取邮件ID将来自增长
+        //邮件ID自增长
         //emailid
-        emailbox.setEmailid("1");
 
         //获取发件人姓名
         //sender
@@ -89,6 +93,7 @@ public class PageController {
 
         emailboxService.saveEmail(emailbox);
 
+        return "return_index";
     }
 
     @ResponseBody

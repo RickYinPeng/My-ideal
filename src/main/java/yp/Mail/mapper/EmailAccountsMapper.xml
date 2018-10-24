@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="yp.Mail.mapper.EmailAccountsMapper" >
   <resultMap id="BaseResultMap" type="yp.Mail.pojo.EmailAccounts" >
-    <id column="UserID" property="userid" jdbcType="VARCHAR" />
+    <id column="UserID" property="userid" jdbcType="INTEGER" />
     <result column="Mail_UserName" property="mailUsername" jdbcType="VARCHAR" />
     <result column="Mail_PassWord" property="mailPassword" jdbcType="VARCHAR" />
     <result column="HasBeen_Sent" property="hasbeenSent" jdbcType="VARCHAR" />
@@ -84,15 +84,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from email_accounts
-    where UserID = #{userid,jdbcType=VARCHAR}
+    where UserID = #{userid,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from email_accounts
-    where UserID = #{userid,jdbcType=VARCHAR}
+    where UserID = #{userid,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="yp.Mail.pojo.EmailAccountsExample" >
     delete from email_accounts
@@ -104,7 +104,7 @@
     insert into email_accounts (UserID, Mail_UserName, Mail_PassWord, 
       HasBeen_Sent, HasBeen_Accepted, LinkMan
       )
-    values (#{userid,jdbcType=VARCHAR}, #{mailUsername,jdbcType=VARCHAR}, #{mailPassword,jdbcType=VARCHAR}, 
+    values (#{userid,jdbcType=INTEGER}, #{mailUsername,jdbcType=VARCHAR}, #{mailPassword,jdbcType=VARCHAR}, 
       #{hasbeenSent,jdbcType=VARCHAR}, #{hasbeenAccepted,jdbcType=VARCHAR}, #{linkman,jdbcType=VARCHAR}
       )
   </insert>
@@ -132,7 +132,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="userid != null" >
-        #{userid,jdbcType=VARCHAR},
+        #{userid,jdbcType=INTEGER},
       </if>
       <if test="mailUsername != null" >
         #{mailUsername,jdbcType=VARCHAR},
@@ -161,7 +161,7 @@
     update email_accounts
     <set >
       <if test="record.userid != null" >
-        UserID = #{record.userid,jdbcType=VARCHAR},
+        UserID = #{record.userid,jdbcType=INTEGER},
       </if>
       <if test="record.mailUsername != null" >
         Mail_UserName = #{record.mailUsername,jdbcType=VARCHAR},
@@ -185,7 +185,7 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update email_accounts
-    set UserID = #{record.userid,jdbcType=VARCHAR},
+    set UserID = #{record.userid,jdbcType=INTEGER},
       Mail_UserName = #{record.mailUsername,jdbcType=VARCHAR},
       Mail_PassWord = #{record.mailPassword,jdbcType=VARCHAR},
       HasBeen_Sent = #{record.hasbeenSent,jdbcType=VARCHAR},
@@ -214,7 +214,7 @@
         LinkMan = #{linkman,jdbcType=VARCHAR},
       </if>
     </set>
-    where UserID = #{userid,jdbcType=VARCHAR}
+    where UserID = #{userid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="yp.Mail.pojo.EmailAccounts" >
     update email_accounts
@@ -223,6 +223,6 @@
       HasBeen_Sent = #{hasbeenSent,jdbcType=VARCHAR},
       HasBeen_Accepted = #{hasbeenAccepted,jdbcType=VARCHAR},
       LinkMan = #{linkman,jdbcType=VARCHAR}
-    where UserID = #{userid,jdbcType=VARCHAR}
+    where UserID = #{userid,jdbcType=INTEGER}
   </update>
 </mapper>

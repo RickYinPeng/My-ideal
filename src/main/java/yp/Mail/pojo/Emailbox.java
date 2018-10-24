@@ -3,51 +3,38 @@ package yp.Mail.pojo;
 import java.util.Date;
 
 public class Emailbox {
-    //邮件编号
-    private String emailid;
+    private Integer emailid;
 
-    //发送人
     private String sender;
 
-    //发送人编号
     private String sendercode;
 
-    //收信人
     private String receiver;
 
-    //收信人编号
     private String receivercode;
 
-    //主题
     private String title;
 
-    //内容
     private String content;
 
-    //附件
     private String enclosure;
 
-    //发送类型 0：普通 1:急件
     private Integer sendtype;
 
-    //发送日期
     private Date senddate;
 
-    //读取时间
     private Date readdate;
 
-    //邮箱类型 0：草稿箱 1：收件箱 2：发件箱 3：垃圾箱
     private Integer boxtype;
 
-    //邮件类型 0：未读 1：已读 2：回复 3：转发 4：全部转发
     private Integer emailstatus;
 
-    public String getEmailid() {
+    public Integer getEmailid() {
         return emailid;
     }
 
-    public void setEmailid(String emailid) {
-        this.emailid = emailid == null ? null : emailid.trim();
+    public void setEmailid(Integer emailid) {
+        this.emailid = emailid;
     }
 
     public String getSender() {
@@ -144,24 +131,5 @@ public class Emailbox {
 
     public void setEmailstatus(Integer emailstatus) {
         this.emailstatus = emailstatus;
-    }
-
-    @Override
-    public String toString() {
-        return "Emailbox{" +
-                "emailid='" + emailid + '\'' +
-                ", sender='" + sender + '\'' +
-                ", sendercode='" + sendercode + '\'' +
-                ", receiver='" + receiver + '\'' +
-                ", receivercode='" + receivercode + '\'' +
-                ", title='" + title + '\'' +
-                ", content='" + content + '\'' +
-                ", enclosure='" + enclosure + '\'' +
-                ", sendtype=" + sendtype +
-                ", senddate=" + senddate +
-                ", readdate=" + readdate +
-                ", boxtype=" + boxtype +
-                ", emailstatus=" + emailstatus +
-                '}';
     }
 }

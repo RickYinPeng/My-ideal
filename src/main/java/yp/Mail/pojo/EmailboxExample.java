@@ -115,62 +115,52 @@ public class EmailboxExample {
             return (Criteria) this;
         }
 
-        public Criteria andEmailidEqualTo(String value) {
+        public Criteria andEmailidEqualTo(Integer value) {
             addCriterion("EmailID =", value, "emailid");
             return (Criteria) this;
         }
 
-        public Criteria andEmailidNotEqualTo(String value) {
+        public Criteria andEmailidNotEqualTo(Integer value) {
             addCriterion("EmailID <>", value, "emailid");
             return (Criteria) this;
         }
 
-        public Criteria andEmailidGreaterThan(String value) {
+        public Criteria andEmailidGreaterThan(Integer value) {
             addCriterion("EmailID >", value, "emailid");
             return (Criteria) this;
         }
 
-        public Criteria andEmailidGreaterThanOrEqualTo(String value) {
+        public Criteria andEmailidGreaterThanOrEqualTo(Integer value) {
             addCriterion("EmailID >=", value, "emailid");
             return (Criteria) this;
         }
 
-        public Criteria andEmailidLessThan(String value) {
+        public Criteria andEmailidLessThan(Integer value) {
             addCriterion("EmailID <", value, "emailid");
             return (Criteria) this;
         }
 
-        public Criteria andEmailidLessThanOrEqualTo(String value) {
+        public Criteria andEmailidLessThanOrEqualTo(Integer value) {
             addCriterion("EmailID <=", value, "emailid");
             return (Criteria) this;
         }
 
-        public Criteria andEmailidLike(String value) {
-            addCriterion("EmailID like", value, "emailid");
-            return (Criteria) this;
-        }
-
-        public Criteria andEmailidNotLike(String value) {
-            addCriterion("EmailID not like", value, "emailid");
-            return (Criteria) this;
-        }
-
-        public Criteria andEmailidIn(List<String> values) {
+        public Criteria andEmailidIn(List<Integer> values) {
             addCriterion("EmailID in", values, "emailid");
             return (Criteria) this;
         }
 
-        public Criteria andEmailidNotIn(List<String> values) {
+        public Criteria andEmailidNotIn(List<Integer> values) {
             addCriterion("EmailID not in", values, "emailid");
             return (Criteria) this;
         }
 
-        public Criteria andEmailidBetween(String value1, String value2) {
+        public Criteria andEmailidBetween(Integer value1, Integer value2) {
             addCriterion("EmailID between", value1, value2, "emailid");
             return (Criteria) this;
         }
 
-        public Criteria andEmailidNotBetween(String value1, String value2) {
+        public Criteria andEmailidNotBetween(Integer value1, Integer value2) {
             addCriterion("EmailID not between", value1, value2, "emailid");
             return (Criteria) this;
         }

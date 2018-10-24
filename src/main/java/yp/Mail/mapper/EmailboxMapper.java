@@ -11,7 +11,7 @@ public interface EmailboxMapper {
 
     int deleteByExample(EmailboxExample example);
 
-    int deleteByPrimaryKey(String emailid);
+    int deleteByPrimaryKey(Integer emailid);
 
     int insert(Emailbox record);
 
@@ -19,7 +19,7 @@ public interface EmailboxMapper {
 
     List<Emailbox> selectByExample(EmailboxExample example);
 
-    Emailbox selectByPrimaryKey(String emailid);
+    Emailbox selectByPrimaryKey(Integer emailid);
 
     int updateByExampleSelective(@Param("record") Emailbox record, @Param("example") EmailboxExample example);
 

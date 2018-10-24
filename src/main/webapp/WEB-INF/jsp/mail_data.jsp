@@ -16,8 +16,8 @@
 
 <script type="text/html" id="toolbarDemo">
     <div class="layui-btn-container">
-        <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
-        <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
+        <button class="layui-btn layui-btn-sm" lay-event="getCheckData">删除</button>
+        <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">没啥用</button>
         <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
     </div>
 </script>
@@ -39,21 +39,13 @@
             elem: '#test'
             ,url:'/test/table/demo1.json'
             ,toolbar: '#toolbarDemo'
-            ,title: '用户数据表'
+            ,title: '邮件数据表'
             ,cols: [[
                 {type: 'checkbox', fixed: 'left'}
-                ,{field:'id', title:'ID', width:80, fixed: 'left', unresize: true, sort: true}
-                ,{field:'username', title:'用户名', width:120, edit: 'text'}
-                ,{field:'email', title:'邮箱', width:150, edit: 'text', templet: function(res){
-                    return '<em>'+ res.email +'</em>'
-                }}
-                ,{field:'sex', title:'性别', width:80, edit: 'text', sort: true}
-                ,{field:'city', title:'城市', width:100}
-                ,{field:'sign', title:'签名'}
-                ,{field:'experience', title:'积分', width:80, sort: true}
-                ,{field:'ip', title:'IP', width:120}
-                ,{field:'logins', title:'登入次数', width:100, sort: true}
-                ,{field:'joinTime', title:'加入时间', width:120}
+                ,{field:'emailid', title:'ID', width:80, fixed: 'left', unresize: true, sort: true}
+                ,{field:'sendercode', title:'发件人', width:200, edit: 'text'}
+                ,{field:'title', title:'主题', width:500, edit: 'text'}
+                ,{field:'senddate', title:'时间', width:270}
                 ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
             ]]
             ,page: true

@@ -54,7 +54,7 @@
                     </dl>--%>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;">&emsp;&emsp;<i class="layui-icon layui-icon-release"></i>&emsp;&emsp;收信</a>
+                    <a href="/mail_data" target="body">&emsp;&emsp;<i class="layui-icon layui-icon-release"></i>&emsp;&emsp;收信</a>
                     <%--<dl class="layui-nav-child">
                         <dd><a href="javascript:;">列表一</a></dd>
                         <dd><a href="javascript:;">列表二</a></dd>
@@ -83,6 +83,7 @@
 </div>
 <script src="/layui/layui.js"></script>
 <script>
+
     //JavaScript代码区域
     layui.use('element', function(){
         var element = layui.element;
