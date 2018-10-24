@@ -1,5 +1,7 @@
 package yp.Mail.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Emailbox {
@@ -101,6 +103,7 @@ public class Emailbox {
         this.sendtype = sendtype;
     }
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     public Date getSenddate() {
         return senddate;
     }
@@ -109,6 +112,7 @@ public class Emailbox {
         this.senddate = senddate;
     }
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     public Date getReaddate() {
         return readdate;
     }
@@ -131,5 +135,24 @@ public class Emailbox {
 
     public void setEmailstatus(Integer emailstatus) {
         this.emailstatus = emailstatus;
+    }
+
+    @Override
+    public String toString() {
+        return "Emailbox{" +
+                "emailid=" + emailid +
+                ", sender='" + sender + '\'' +
+                ", sendercode='" + sendercode + '\'' +
+                ", receiver='" + receiver + '\'' +
+                ", receivercode='" + receivercode + '\'' +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", enclosure='" + enclosure + '\'' +
+                ", sendtype=" + sendtype +
+                ", senddate=" + senddate +
+                ", readdate=" + readdate +
+                ", boxtype=" + boxtype +
+                ", emailstatus=" + emailstatus +
+                '}';
     }
 }
