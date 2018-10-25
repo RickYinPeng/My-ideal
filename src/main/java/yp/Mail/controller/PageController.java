@@ -65,10 +65,11 @@ public class PageController {
         //收件人邮箱地址---------receivercode
         //主题--------------title
         //正文--------------content
+        //附件--------------enclosure
 
-        //附件
+        /*//附件
         //enclosure
-        emailbox.setEnclosure("");
+        emailbox.setEnclosure("");*/
 
         //发送类型 0：普通 1:急件
         //sendtype

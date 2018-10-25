@@ -75,11 +75,10 @@
        <%-- <div style="padding: 15px;">内容主体区域</div>--%>
         <iframe name="body" width="100%" height="100%"></iframe>
     </div>
-
-<%--    <div class="layui-footer">
+    <div class="layui-footer">
         <!-- 底部固定区域 -->
         © rickYinPeng.com
-    </div>--%>
+    </div>
 </div>
 <script src="/layui/layui.js"></script>
 <script>

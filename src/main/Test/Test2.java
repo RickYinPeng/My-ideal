@@ -44,4 +44,14 @@ public class Test2 {
         System.out.println(emailbox);
 
     }
+
+
+    @Test
+    public void split(){
+        String en = "G:\\upload_File\\6d85c8a319fd428fbec5195020b1cf5a.png,G:\\upload_File\\6d85c8a319fd428fbec5195020b1cf5a.png,G:\\upload_File\\6d85c8a319fd428fbec5195020b1cf5a.png,";
+        String[] split = en.split(",");
+
+        System.out.println(split.length);
+
+    }
 }
