@@ -98,9 +98,11 @@ public class ReceiverController {
             String realPath = "G:\\upload_File";
             File file = new File(realPath, fileName);
             if (file.exists()) {
-                response.setContentType("application/force-download");// 设置强制下载不打开
+                // 设置强制下载不打开
+                response.setContentType("application/force-download");
                 response.addHeader("Content-Disposition",
-                        "attachment;fileName=" + fileName);// 设置文件名
+                        // 设置文件名
+                        "attachment;fileName=" + fileName);
                 byte[] buffer = new byte[1024];
                 FileInputStream fis = null;
                 BufferedInputStream bis = null;
@@ -137,7 +139,6 @@ public class ReceiverController {
             }
         }
     }
-
     @RequestMapping("/uplocal_File")
     public String uplocal_File(){
         System.out.println("进入uplocal_File方法");

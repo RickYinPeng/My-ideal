@@ -39,7 +39,6 @@ public class PageController {
         return page;
     }
 
-    //{emailid='null', sender='null', sendercode='null', receiver='null', receivercode='null', title='3123', content='<img src="/pic/a11f0cd576834043a7a2bbbc53b6f7e6.jpg" alt="上传的图片">', enclosure='null', sendtype=null, senddate=null, readdate=null, boxtype=null, emailstatus=null}
     @RequestMapping("/email/send")
     public String sendEmail(Emailbox emailbox) {
 
@@ -100,13 +99,6 @@ public class PageController {
     @ResponseBody
     @RequestMapping("/uploadimage")
     public imageResult uploadImage(@RequestParam("file") MultipartFile pictureFile) throws IOException {
-/*        System.out.println("进入uploadImage方法2");
-        imageResult imageResult = new imageResult();
-        imageResult.setCode(0);
-        ImageData data = new ImageData();
-        data.setSrc("G:\\upload\\683ee153e5bf4164a9de9ab20086ca6b.jpg");
-        data.setTitle("My");
-        imageResult.setData(data);*/
         String name = UUID.randomUUID().toString().replaceAll("-", "");
 
         //后缀名截取（这个工具帮我们做了）

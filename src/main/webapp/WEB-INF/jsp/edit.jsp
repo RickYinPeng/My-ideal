@@ -62,7 +62,7 @@
                             </div>
 
                         </div>
-                        <input type="hidden" id="enclosureID" name="enclosure" lay-verify="required" placeholder="邮件附件内容" autocomplete="off" class="layui-input"/>
+                        <input type="text" id="enclosureID" name="enclosure" lay-verify="required" placeholder="邮件附件内容" autocomplete="off" class="layui-input"/>
 
                     </div>
    <%--                 <div class="layui-input-block">
@@ -148,8 +148,12 @@
             ,done: function(res, index, upload){
                 if(res.code == 0){ //上传成功
                     //将页面中隐藏表单的值改为后台传来的数据src
-                    $('#enclosureID').val(res.data.src+",");
-                    alert("res.data.src"+res.data.src);
+                    var input = $('#enclosureID').val();
+//                    alert("input:"+input);
+                    input +=res.data.src+",";
+                    $('#enclosureID').val(input);
+//                    alert("res.data.src"+res.data.src);
+
                     var tr = demoListView.find('tr#upload-'+ index)
                         ,tds = tr.children();
                     tds.eq(2).html('<span style="color: #5FB878;">上传成功</span>');
