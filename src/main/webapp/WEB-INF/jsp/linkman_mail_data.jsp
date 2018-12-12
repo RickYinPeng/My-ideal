@@ -25,13 +25,14 @@
         <button class="layui-btn layui-btn-sm" lay-event="getCheckData">删除</button>
         <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">没啥用</button>
         <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
+        <button class="layui-btn layui-btn-sm" lay-event="max"><a href="/maxEmail">群发</a></button>
     </div>
 
 </script>
 
 <script type="text/html" id="barDemo">
-    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
-    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">发邮件</a>
+    <%--<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>--%>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
 
@@ -45,16 +46,14 @@
 
         table.render({
             elem: '#test'
-            , url: '/test/table/demo1?flag=1'
+            , url: '/email/linkman'
             , title: '邮件数据表'
             , toolbar: '#toolbarDemo'
             , cols: [[
                 {type: 'checkbox', fixed: 'left'}
-                , {field: 'emailid', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true}
-                , {field: 'sendercode', title: '发件人', width: 200, edit: 'text'}
-                , {field: 'title', title: '主题', edit: 'text'}
-                , {field: 'senddate', title: '时间', width: 270}
-                , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 200}
+                , {field: 'userid', title: 'ID', fixed: 'left', unresize: true, sort: true}
+                , {field: 'mailUsername', title: '联系人姓名', edit: 'text'}
+                , {fixed: 'right', title: '操作', toolbar: '#barDemo'}
             ]]
             , page: true
             , id: 'testReload'
@@ -83,16 +82,11 @@
             var data = obj.data;
             //console.log(obj)
             if (obj.event === 'detail') {
-                window.location.href="/See/mail?emailid="+data.emailid;
-
+                window.location.href="/send/email?userid="+data.userid;
                 /*layer.msg('查看操作');*/
             }
             else if (obj.event === 'del') {
                 layer.confirm('真的删除行么', function (index) {
-                    $.ajax({
-                        type: "GET",
-                        url: "/email/delete?emailid="+data.emailid,
-                    });
                     obj.del();
                     layer.close(index);
                 });

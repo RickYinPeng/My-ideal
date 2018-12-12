@@ -35,9 +35,12 @@ public class ReceiverController {
 
     @ResponseBody
     @RequestMapping("/test/table/demo1")
-    public tableResult<Emailbox> receiverEmail(Integer page, Integer limit, @RequestParam(defaultValue = "0") Integer emailid) {
+    public tableResult<Emailbox> receiverEmail(Integer flag,HttpServletRequest request,Integer page, Integer limit, @RequestParam(defaultValue = "0") Integer emailid) {
         System.out.println("进入receiverEmail方法！！！");
-        tableResult<Emailbox> receiverEmailList = emailboxService.getReceiverEmailList(page, limit, emailid);
+        String user = (String) request.getSession(false).getAttribute("user");
+        System.out.println("flag:"+flag);
+
+        tableResult<Emailbox> receiverEmailList = emailboxService.getReceiverEmailList(flag,user,page, limit);
         return receiverEmailList;
     }
 
@@ -64,7 +67,7 @@ public class ReceiverController {
             model.addAttribute("enclosure", enclosureList);
         }
         model.addAttribute("emailbox", emailbox);
-        return "SeeMail";
+        return "mailContent";
     }
 
     @ResponseBody
@@ -91,6 +94,7 @@ public class ReceiverController {
     public void downloadFile(String fileName,
                              HttpServletRequest request, HttpServletResponse response){
         /*String fileName = "36267fd7c884474fb79c62c2d18955fd.png";*/
+        System.out.println("进入下载逻辑！！！");
 
         if (fileName != null) {
 /*            String realPath = request.getServletContext().getRealPath(
@@ -143,6 +147,11 @@ public class ReceiverController {
     public String uplocal_File(){
         System.out.println("进入uplocal_File方法");
         return "uplocal_File";
+    }
+
+    @RequestMapping("/email/delete")
+    public void deleteEmail(Integer emailid){
+        emailboxService.deleteEmail(emailid);
     }
 
 }

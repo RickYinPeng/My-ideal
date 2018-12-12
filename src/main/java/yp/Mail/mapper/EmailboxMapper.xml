@@ -108,7 +108,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="yp.Mail.pojo.Emailbox" >
+  <insert id="insert" useGeneratedKeys="true" keyProperty="emailid" parameterType="yp.Mail.pojo.Emailbox" >
     insert into emailbox (EmailID, Sender, SenderCode, 
       Receiver, ReceiverCode, Title, 
       Content, Enclosure, SendType, 

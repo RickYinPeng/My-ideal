@@ -20,7 +20,7 @@
     </ul>
     <div class="layui-tab-content">
         <div class="layui-tab-item layui-show">
-            <form class="layui-form" action="/email/send?flag=1"  method="post" id="form1">
+            <form class="layui-form" action="/email/maxSend?flag=5"  method="post" id="form1">
                 <div class="layui-form-item">
                     <div class="layui-input-block">
                         <button class="layui-btn"  lay-submit lay-filter="formDemo"><i class="layui-icon">&#xe609;</i> 发送</button>
@@ -30,12 +30,12 @@
                         <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                     </div>
                 </div>
-                <div class="layui-form-item" >
+<%--                <div class="layui-form-item" >
                     <label class="layui-form-label">收件人</label>
                     <div class="layui-input-block">
                         <input type="text" name="receivercode" lay-verify="title" autocomplete="off" placeholder="请输入收件人地址" class="layui-input" value="${receivercode}">
                     </div>
-                </div>
+                </div>--%>
                 <div class="layui-form-item">
                     <label class="layui-form-label">主题</label>
                     <div class="layui-input-block">

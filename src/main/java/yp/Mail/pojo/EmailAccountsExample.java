@@ -114,7 +114,7 @@ public class EmailAccountsExample {
             return (Criteria) this;
         }
 
-        public Criteria andUseridEqualTo(Integer value) {
+        public Criteria andUseridEqualTo(String value) {
             addCriterion("UserID =", value, "userid");
             return (Criteria) this;
         }

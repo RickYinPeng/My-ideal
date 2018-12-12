@@ -29,7 +29,7 @@
             <li class="layui-nav-item">
                 <a href="javascript:;">
                     <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-                    贤心
+                    ${pageContext.request.session.getAttribute("user")}
                 </a>
                 <dl class="layui-nav-child">
                     <dd><a href="">基本资料</a></dd>
@@ -61,11 +61,26 @@
                         <dd><a href="">超链接</a></dd>
                     </dl>--%>
                 </li>
-                <li class="layui-nav-item"><a href="">&emsp;&emsp;<i class="layui-icon layui-icon-user"></i>&emsp;&emsp;通讯录</a></li>
-                <li class="layui-nav-item"><a href="">&emsp;&emsp;<i class="layui-icon layui-icon-file-b"></i>&emsp;&emsp;草稿箱</a></li>
-                <li class="layui-nav-item"><a href="">&emsp;&emsp;<i class="layui-icon layui-icon-release"></i>&emsp;&emsp;已发送</a></li>
-                <li class="layui-nav-item"><a href="">&emsp;&emsp;<i class="layui-icon layui-icon-tree"></i>&emsp;&emsp;已删除</a></li>
-                <li class="layui-nav-item"><a href="">&emsp;&emsp;<i class="layui-icon layui-icon-delete"></i>&emsp;&emsp;垃圾箱</a></li>
+
+                <li class="layui-nav-item">
+                    <a href="/linkman_mail_data" target="body">&emsp;&emsp;<i class="layui-icon layui-icon-user"></i>&emsp;&emsp;通讯录</a>
+                </li>
+
+                <li class="layui-nav-item">
+                    <a href="/drafts_mail_data" target="body">&emsp;&emsp;<i class="layui-icon layui-icon-file-b"></i>&emsp;&emsp;草稿箱</a>
+                </li>
+
+                <li class="layui-nav-item">
+                    <a href="/inbox_mail_data" target="body">&emsp;&emsp;<i class="layui-icon layui-icon-release"></i>&emsp;&emsp;已发送</a>
+                </li>
+
+                <li class="layui-nav-item">
+                    <a href="/delete_mail_data" target="body">&emsp;&emsp;<i class="layui-icon layui-icon-tree"></i>&emsp;&emsp;已删除</a>
+                </li>
+
+                <li class="layui-nav-item">
+                    <a href="">&emsp;&emsp;<i class="layui-icon layui-icon-delete"></i>&emsp;&emsp;垃圾箱</a>
+                </li>
             </ul>
         </div>
     </div>

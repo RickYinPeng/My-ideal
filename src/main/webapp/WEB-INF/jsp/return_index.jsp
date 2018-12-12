@@ -11,6 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-    发送成功！！！，是否返回主页
+    ${msg}！！！，是否返回主页
 </body>
 </html>

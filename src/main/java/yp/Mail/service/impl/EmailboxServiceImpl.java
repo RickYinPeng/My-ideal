@@ -25,8 +25,6 @@ public class EmailboxServiceImpl implements EmailboxService{
     @Autowired
     private EmailboxMapper emailboxMapper;
 
-    @Autowired
-    private EmailAccountsMapper emailAccountsMapper;
 
     @Override
     public void saveEmail(Emailbox emailbox) {
@@ -34,7 +32,7 @@ public class EmailboxServiceImpl implements EmailboxService{
     }
 
     @Override
-    public tableResult<Emailbox> getReceiverEmailList(Integer page, Integer limit,Integer emailid) {
+    public tableResult<Emailbox> getReceiverEmailList(Integer flag,String user,Integer page, Integer limit) {
         //设置分页信息
         //page:页码
         //limit:每页显示数量
@@ -42,9 +40,22 @@ public class EmailboxServiceImpl implements EmailboxService{
 
         //执行查询
         EmailboxExample emailboxExample = new EmailboxExample();
-        if(emailid!=0) {
-            EmailboxExample.Criteria criteria = emailboxExample.createCriteria();
-            criteria.andEmailidEqualTo(emailid);
+
+        EmailboxExample.Criteria criteria = emailboxExample.createCriteria();
+        if(flag==1) {
+            criteria.andReceiverEqualTo(user);
+            criteria.andBoxtypeEqualTo(2);
+        }else if(flag==2){
+            criteria.andSenderEqualTo(user);
+            criteria.andBoxtypeEqualTo(2);
+        }else if(flag==3){
+            criteria.andSenderEqualTo(user);
+            criteria.andBoxtypeEqualTo(0);
+        }else if(flag==4){
+            criteria.andSenderEqualTo(user);
+            criteria.andBoxtypeEqualTo(3);
+        }else {
+            criteria.andSendtypeEqualTo(1);
         }
         List<Emailbox> emailboxes = emailboxMapper.selectByExample(emailboxExample);
         //创建一个返回值对象
@@ -61,6 +72,13 @@ public class EmailboxServiceImpl implements EmailboxService{
     public Emailbox SeeMail(Integer emailid) {
         Emailbox emailbox = emailboxMapper.selectByPrimaryKey(emailid);
         return emailbox;
+    }
+
+    @Override
+    public void deleteEmail(Integer emailid) {
+        Emailbox emailbox = emailboxMapper.selectByPrimaryKey(emailid);
+        emailbox.setBoxtype(3);
+        emailboxMapper.updateByPrimaryKey(emailbox);
     }
 
 }

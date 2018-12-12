@@ -45,13 +45,13 @@
 
         table.render({
             elem: '#test'
-            , url: '/test/table/demo1?flag=1'
+            , url: '/test/table/demo1?flag=3'
             , title: '邮件数据表'
             , toolbar: '#toolbarDemo'
             , cols: [[
                 {type: 'checkbox', fixed: 'left'}
                 , {field: 'emailid', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true}
-                , {field: 'sendercode', title: '发件人', width: 200, edit: 'text'}
+                , {field: 'receivercode', title: '收件人', width: 200, edit: 'text'}
                 , {field: 'title', title: '主题', edit: 'text'}
                 , {field: 'senddate', title: '时间', width: 270}
                 , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 200}
@@ -89,10 +89,6 @@
             }
             else if (obj.event === 'del') {
                 layer.confirm('真的删除行么', function (index) {
-                    $.ajax({
-                        type: "GET",
-                        url: "/email/delete?emailid="+data.emailid,
-                    });
                     obj.del();
                     layer.close(index);
                 });

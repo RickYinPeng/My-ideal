@@ -60,4 +60,16 @@ public class EmailAccounts {
     public void setLinkman(String linkman) {
         this.linkman = linkman == null ? null : linkman.trim();
     }
+
+    @Override
+    public String toString() {
+        return "EmailAccounts{" +
+                "userid=" + userid +
+                ", mailUsername='" + mailUsername + '\'' +
+                ", mailPassword='" + mailPassword + '\'' +
+                ", hasbeenSent='" + hasbeenSent + '\'' +
+                ", hasbeenAccepted='" + hasbeenAccepted + '\'' +
+                ", linkman='" + linkman + '\'' +
+                '}';
+    }
 }

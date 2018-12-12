@@ -17,7 +17,7 @@ public interface EmailboxService {
      * @param limit 每页显示多少
      * @return json
      */
-    public tableResult<Emailbox> getReceiverEmailList(Integer page,Integer limit,Integer emailid);
+    public tableResult<Emailbox> getReceiverEmailList(Integer flag,String user,Integer page,Integer limit);
 
     /**
      * 用户点击查看邮件按钮时触发的后台
@@ -26,4 +26,9 @@ public interface EmailboxService {
      */
     public Emailbox SeeMail(Integer emailid);
 
+    /**
+     * 删除邮件
+     * @param emailid
+     */
+    public void deleteEmail(Integer emailid);
 }
