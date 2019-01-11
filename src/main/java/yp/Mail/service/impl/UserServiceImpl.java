@@ -80,7 +80,7 @@ public class UserServiceImpl implements UserService{
 
                 List<EmailAccounts> emailAccounts2 = emailAccountsMapper.selectByExample(emailAccountsExample2);
                 System.out.println("emailAccounts2.size():"+emailAccounts2.size());
-
+     
 
                 //创建一个返回值对象
                 tableResult tableResult = new tableResult();
